@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication';
 import { User } from '../models/user';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -13,46 +19,69 @@ import { User } from '../models/user';
   styleUrl: './login.css'
 })
 export class LoginComponent {
-  public formError: string = '';
+  public formError = '';
+  public message = '';
+  public isSubmitting = false;
 
-  credentials = {
-    name: '',
+  public credentials: LoginCredentials = {
     email: '',
     password: ''
   };
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private authenticationService: AuthenticationService
-  ) {}
+  ) {
+    // Explain why the user was redirected to the login page.
+    if (this.route.snapshot.queryParamMap.get('reason') === 'auth-required') {
+      this.message = 'You must be logged in to add or edit trips.';
+    }
+  }
 
   public onLoginSubmit(): void {
     this.formError = '';
 
-    if (!this.credentials.email || !this.credentials.password || !this.credentials.name) {
-      this.formError = 'All fields are required, please try again';
+    const email = this.credentials.email.trim();
+
+    if (!email || !this.credentials.password) {
+      this.formError = 'Email and password are required.';
       return;
     }
 
-    this.doLogin();
+    this.doLogin(email);
   }
 
-  private doLogin(): void {
-    const newUser = {
-      name: this.credentials.name,
-      email: this.credentials.email
+  private doLogin(email: string): void {
+    const user = {
+      email,
+      name: ''
     } as User;
 
-    this.authenticationService.login(newUser, this.credentials.password);
+    this.isSubmitting = true;
 
-    if (this.authenticationService.isLoggedIn()) {
-      this.router.navigate(['']);
-    } else {
-      setTimeout(() => {
-        if (this.authenticationService.isLoggedIn()) {
+    // Wait for the API response before changing pages or showing an error.
+    this.authenticationService
+      .login(user, this.credentials.password)
+      .subscribe({
+        next: () => {
+          this.isSubmitting = false;
           this.router.navigate(['']);
+        },
+        error: (error: HttpErrorResponse) => {
+          this.isSubmitting = false;
+          this.handleLoginError(error);
         }
-      }, 1000);
+      });
+  }
+
+  private handleLoginError(error: HttpErrorResponse): void {
+    if (error.status === 401) {
+      this.formError = 'The email or password is incorrect.';
+      return;
     }
+
+    // Use a general message when the server cannot complete the request.
+    this.formError = 'Login could not be completed. Please try again.';
   }
 }

@@ -3,45 +3,46 @@
     <h2>Login</h2>
 
     <form (ngSubmit)="onLoginSubmit()">
-      <div role="alert" *ngIf="formError" class="alert alert-danger">
+      <div role="alert"
+           *ngIf="formError"
+           class="alert alert-danger">
         {{ formError }}
       </div>
 
-      <div class="form-group mb-3">
-        <label for="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          class="form-control"
-          placeholder="Enter Name"
-          [(ngModel)]="credentials.name">
+      <div class="alert alert-info" *ngIf="message">
+        {{ message }}
       </div>
 
       <div class="form-group mb-3">
         <label for="email">Email Address</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          class="form-control"
-          placeholder="Enter email address"
-          [(ngModel)]="credentials.email">
+        <input type="email"
+               name="email"
+               id="email"
+               class="form-control"
+               placeholder="Enter email address"
+               autocomplete="email"
+               required
+               [disabled]="isSubmitting"
+               [(ngModel)]="credentials.email">
       </div>
 
       <div class="form-group mb-3">
         <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          name="password"
-          placeholder="Enter password"
-          [(ngModel)]="credentials.password">
+        <input type="password"
+               name="password"
+               id="password"
+               class="form-control"
+               placeholder="Enter password"
+               autocomplete="current-password"
+               required
+               [disabled]="isSubmitting"
+               [(ngModel)]="credentials.password">
       </div>
 
-      <button type="submit" class="btn btn-primary">
-        Sign In
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Signing In...' : 'Sign In' }}
       </button>
     </form>
   </div>
