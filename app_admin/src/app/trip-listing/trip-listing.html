@@ -1,0 +1,15 @@
+<button
+  (click)="addTrip()"
+  class="btn btn-primary"
+  *ngIf="isLoggedIn()">
+  Add Trip
+</button>
+
+<div class="row mt-3">
+  <div *ngFor="let trip of trips" class="col-md-4 mb-3">
+    <app-trip-card
+      [trip]="trip"
+      (tripDeleted)="refreshTrips()">
+    </app-trip-card>
+  </div>
+</div>

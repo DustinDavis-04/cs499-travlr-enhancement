@@ -1,0 +1,32 @@
+[
+    {        
+        "name": "Gale Reef",
+        "code": "GR1",
+        "start": "2024-06-01",
+        "image": "/images/reef1.jpg",
+        "description": "Gale Reef is a beautiful travel destination with amazing underwater views and relaxing surroundings.",
+        "length": "5 nights",
+        "resort": "Gale Reef Resort",
+        "perPerson": "799"
+    },
+    {
+        "name": "Dawson's Reef",
+        "code": "DR1",
+        "start": "2024-07-15",
+        "image": "/images/reef2.jpg",
+        "description": "Dawsons Reef offers a peaceful getaway with ocean views, snorkeling, and a relaxing resort experience.",
+        "length": "7 nights",
+        "resort": "Dawson's Reef Resort",
+        "perPerson": "999"
+    },
+    {
+        "name": "Claire's Reef",
+        "code": "CR1",
+        "start": "2024-08-10",
+        "image": "/images/reef3.jpg",
+        "description": "Claires Reef is known for its clear water, scenic views, and comfortable resort accommodations.",
+        "length": "6 nights",
+        "resort": "Claire's Reef Resort",
+        "perPerson": "899"
+    }
+]
