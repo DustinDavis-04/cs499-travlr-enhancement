@@ -1,26 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{ title() }}</a>
+<div class="admin-page">
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <a class="admin-brand" routerLink="/">
+        <img src="assets/images/logo.png"
+             alt="Travlr Getaways"
+             class="admin-logo">
 
-    <div class="ms-auto">
-      <a
-        class="nav-link d-inline-block"
-        routerLink="login"
-        *ngIf="!isLoggedIn()">
-        Log In
+        <span class="brand-admin">ADMIN</span>
       </a>
 
-      <a
-        class="nav-link d-inline-block"
-        href="#"
-        (click)="onLogout(); $event.preventDefault()"
-        *ngIf="isLoggedIn()">
-        Log Out
-      </a>
+      <nav class="admin-nav">
+        <a routerLink="/"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">
+          Trips
+        </a>
+
+        <a routerLink="/add-trip"
+           routerLinkActive="active"
+           *ngIf="isLoggedIn()">
+          Add Trip
+        </a>
+
+        <a routerLink="/login"
+           routerLinkActive="active"
+           *ngIf="!isLoggedIn()">
+          Log In
+        </a>
+
+        <a href="#"
+           (click)="onLogout(); $event.preventDefault()"
+           *ngIf="isLoggedIn()">
+          Log Out
+        </a>
+      </nav>
     </div>
-  </div>
-</nav>
+  </header>
 
-<div class="container">
-  <router-outlet></router-outlet>
+  <main class="admin-main">
+    <section class="admin-content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
 </div>

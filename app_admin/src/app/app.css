@@ -1,0 +1,154 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient( rgba(235, 218, 174, 0.88), rgba(222, 204, 153, 0.88) ), url('/images/bg-body.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  color: #3d3d2f;
+}
+
+.admin-header {
+  background: linear-gradient( rgba(42, 128, 124, 0.94), rgba(31, 103, 99, 0.94) );
+  border-bottom: 5px solid #d5bb72;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-header-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.admin-logo {
+  display: block;
+  width: auto;
+  height: 58px;
+}
+
+.brand-admin {
+  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.admin-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+  .admin-nav a {
+    padding: 10px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 3px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+    .admin-nav a:hover,
+    .admin-nav a.active {
+      background-color: #d5bb72;
+      color: #324a46;
+    }
+
+.admin-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 34px 24px 60px;
+}
+
+.admin-content {
+  min-height: 500px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid #c7b987;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(70, 61, 36, 0.22);
+}
+
+  .admin-content h1,
+  .admin-content h2,
+  .admin-content h3 {
+    color: #286f6b;
+  }
+
+  .admin-content .btn-info {
+    background-color: #2f8e89;
+    border-color: #2f8e89;
+    color: #ffffff;
+  }
+
+    .admin-content .btn-info:hover,
+    .admin-content .btn-info:focus {
+      background-color: #246f6b;
+      border-color: #246f6b;
+      color: #ffffff;
+    }
+
+  .admin-content .btn-secondary {
+    background-color: #8b8063;
+    border-color: #8b8063;
+    color: #ffffff;
+  }
+
+  .admin-content .btn-danger {
+    background-color: #c94d52;
+    border-color: #c94d52;
+    color: #ffffff;
+  }
+
+  .admin-content .form-control:focus {
+    border-color: #2f8e89;
+    box-shadow: 0 0 0 0.2rem rgba(47, 142, 137, 0.2);
+  }
+
+@media (max-width: 768px) {
+  .admin-header-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-brand {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .admin-nav {
+    width: 100%;
+  }
+
+    .admin-nav a {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+
+  .admin-main {
+    padding: 20px 12px 40px;
+  }
+
+  .admin-content {
+    padding: 20px 16px;
+  }
+}

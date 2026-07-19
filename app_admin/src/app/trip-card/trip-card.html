@@ -1,31 +1,39 @@
-<div class="card h-100">
-  <div class="card-header">{{ trip.name }}</div>
-  <img
-    [src]="'http://localhost:3000' + trip.image"
-    alt="trip thumbnail"
-    class="card-img-top"
-  >
-  <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">
+<div class="trip-card h-100">
+  <div class="trip-card-header">
+    {{ trip.name }}
+  </div>
+
+  <img [src]="'http://localhost:3000' + trip.image"
+       [alt]="trip.name + ' trip image'"
+       class="trip-card-image">
+
+  <div class="trip-card-body">
+    <h6 class="trip-card-resort">
       {{ trip.resort }}
     </h6>
-    <p class="card-subtitle mt-3 mb-3 text-muted">
-      {{ trip.length }} only {{ trip.perPerson | currency:'USD':'symbol' }} per person
+
+    <p class="trip-card-price">
+      {{ trip.length }} only
+      {{ trip.perPerson | currency:'USD':'symbol' }}
+      per person
     </p>
-    <p class="card-text" [innerHTML]="trip.description"></p>
 
-    <button
-      class="btn btn-warning me-2"
-      (click)="editTrip()"
-      *ngIf="isLoggedIn()">
-      Edit Trip
-    </button>
+    <p class="trip-card-description"
+       [innerHTML]="trip.description"></p>
 
-    <button
-      class="btn btn-danger"
-      (click)="deleteTrip()"
-      *ngIf="isLoggedIn()">
-      Delete Trip
-    </button>
+    <div class="trip-card-actions"
+         *ngIf="isLoggedIn()">
+      <button type="button"
+              class="btn edit-button"
+              (click)="editTrip()">
+        Edit Trip
+      </button>
+
+      <button type="button"
+              class="btn delete-button"
+              (click)="deleteTrip()">
+        Delete Trip
+      </button>
+    </div>
   </div>
 </div>

@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { Router, RouterOutlet, RouterLink } from '@angular/router';
+import { Router, RouterOutlet, RouterLinkActive, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from './services/authentication';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet, RouterLinkActive, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
