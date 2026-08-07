@@ -26,3 +26,27 @@ Major improvements include:
 - Better Angular form validation and user feedback
 - Improved trip information and image handling
 - More consistent administrative styling
+
+## Technologies Used
+
+- Angular
+- Node.js
+- Express
+- MongoDB
+- JavaScript
+- HTML
+- CSS
+
+## Original and Enhanced Versions
+
+The original version of this project was created during CS-465 Full Stack Development.
+
+The `main` branch contains the enhanced CS-499 capstone version of the application.
+
+The original version has been preserved with the `v1.0-original` tag so the changes made during the capstone can be reviewed separately.
+
+## Portfolio
+
+A full overview of the artifact, enhancement process, and reflection is available through my CS-499 ePortfolio.
+
+[View Travlr Getaways in the Project Archive](https://dustindavis-04.github.io/projects/travlr.html)
