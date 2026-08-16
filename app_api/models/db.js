@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 
-var dbURI = 'mongodb://127.0.0.1:27017/travlr';
+// Use a separate database during automated tests so test data
+// never changes the normal Travlr application data.
+
+var dbURI = process.env.NODE_ENV === 'test'
+    ? 'mongodb://127.0.0.1:27017/travlr_test'
+    : 'mongodb://127.0.0.1:27017/travlr';
 
 mongoose.connect(dbURI);
 
